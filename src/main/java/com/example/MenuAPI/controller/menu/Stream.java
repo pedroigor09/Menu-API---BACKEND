@@ -1,17 +1,14 @@
 package com.example.MenuAPI.controller.menu;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Table(name = "stream")
+@Table(name = "streams")
 @Entity(name = "Streams")
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class Stream {
 
     @Id
@@ -25,4 +22,9 @@ public class Stream {
     private Integer price;
 
 
+    public Stream(CreateStream createStream) {
+        this.title = createStream.title();
+        this.image = createStream.image();
+        this.price = createStream.price();
+    }
 }
